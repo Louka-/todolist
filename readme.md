@@ -298,9 +298,9 @@ Puis aller dans le fichier composer.json et décaler cette ligne dans "require"
 Puis on ajoute une structure dans scripts:
 ```js
     "scripts": {
-        "compil":[
+        "compile":[
             "php bin/console doctrine:migration:migrate",
-            "php bin/console doctrine:fixtures:load --no-interraction --env=PROD"
+            "php bin/console doctrine:fixtures:load --no-interaction --env=PROD"
         ],
 ```
 __NB__ : Comme on a modifié le composer.json, il est important de faire un :

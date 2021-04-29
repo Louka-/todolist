@@ -26,7 +26,7 @@ class TodoController extends AbstractController
 
 
     /**
-     * @Route("/todo", name="app_todo")
+     * @Route("/", /todo", name="app_todo")
      */
     public function index(TodoRepository $repo): Response
     {

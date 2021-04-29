@@ -54,7 +54,7 @@
     "scripts": {
         "compil":[
             "php bin/console doctrine:migration:migrate",
-            "php bin/console doctrine:fixtures:load --no-interraction --env=PROD"
+            "php bin/console doctrine:fixtures:load --no-interaction --env=PROD"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",

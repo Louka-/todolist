@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} home{% endblock %}
+
+
+
+{% block body %}
+
+
+
+    <div class="container">
+        <div class="row mt-5 justify-content-center">
+                <h3>{{todo.title}}</h3>
+
+            <div class="col-12 mt-5 d-flex justify-content-center">
+                    <ul>
+                        <li>Résumé : {{todo.content}}</li>
+                        <li>Catégorie : {{todo.category.name}}</li>
+                        <li>Créé le : {{todo.createdat|date("d/m/Y")}}</li>
+                        <li>Mis à jour le : {{todo.updatedat|date("d/m/Y")}}</li>
+                        <li>Pour le : {{todo.datefor|date("d/m/Y")}}</li>
+                    </ul>
+
+            </div>
+
+            <div class="col-12 justify-content-center text-center">
+                <a href="{{ path('app_todo') }}" class="btn btn-danger my-3">retour</a>
+            </div>
+        </div>
+    </div>
+    
+        
+
+
+{% endblock %}
+

@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+        <h3 class="my-5">Modifier une Todo</h3>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert-{{ label }} my-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+            {{ form(formTodo)}}
+
+            <form class="deleteform" action="{{ path('app_todo_delete_csrf', { id: todo.id }) }}" method="POST">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <input type="hidden" name="token" value="{{ csrf_token('delete-item') }}"/>
+            <button type="submit" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i></button>
+            </form>
+
+            <a href="{{ path('app_todo') }}" class="btn btn-danger my-3">Retour</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+<script>
+    
+const deleteform = document.querySelector('.deleteform');
+deleteform.addEventListener('click', function(e){
+    e.preventDefault();
+    if(confirm('voulez vous supprimer cette todo?')){
+        this.submit()
+    }
+});
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}} home{% endblock %}
+
+
+
+{% block body %}
+
+
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+            <a href="{{path("app_todo_create")}}" class="btn btn-danger my-5">Nouvelle Todo</a>
+                <table class="table table-striped text-center">
+                    <tr>
+
+                        <th>Titre</th>
+                        <th>Catégorie</th>
+                        <th>Créé le</th>
+                        <th>Actions</th>
+                        <th>Supprimer</th>
+
+                    </tr>
+
+    {% for todo in todos %}
+                    <tr>
+
+                        <td>{{todo.title}}</td>
+                        <td>{{todo.category.name}}</td>
+                        <td>{{todo.createdat|date("d/m/Y")}}</td>
+                        <td>
+                            <a href="{{ path('app_todo_detail', { 'id': todo.id }) }}" class="btn btn-success">Voir</a>
+                            <a href="{{ path('app_todo_edit', { 'id': todo.id }) }}" class="btn btn-info">Editer</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('app_todo_delete', { 'id': todo.id }) }}" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+
+                        </td>
+
+                    </tr>
+
+    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+    
+        
+
+
+{% endblock %}
+

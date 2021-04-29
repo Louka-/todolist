@@ -303,5 +303,41 @@ Puis on ajoute une structure dans scripts:
             "php bin/console doctrine:fixtures:load --no-interraction --env=PROD"
         ],
 ```
+__NB__ : Comme on a modifié le composer.json, il est important de faire un :
+```bash
+composer update
+```
+## Rewriting pour Heroku
+```bash
+composer require symfony/apache-pack
+```
+## Fichier Procfile
+Le fichier créé suivant va dire à Heroku quel web server set utilisé
+```bash
+echo 'web: heroku-php-apache2 public/' > Procfile
+```
+
+## Compte Heroku
+1. Créer un compte
+2. Installer Heroku cmd line
+    - https://devcenter.heroku.com/articles/heroku-cli
+3. Depuis un terminal taper `heroku`
+
+## Créer une application
+1. heroku create
+    - faire un login si besoin
+2. Configurer en mode PROD
+```bash
+heroku config:set APP_ENV=prod
+```
+3. PostGreSQL
+Dans heroku on doit lui donner le SGBD à utiliser
+Chez heroku on trouve ça dans les addons
+```bash
+# voir aussi l'interface de heroku
+heroku addons:create heroku-postgresql:hobby-dev
+```
+Après l'installation, il a créé une variable d'environnement DATABASE_URL
+
 
 

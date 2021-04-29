@@ -52,7 +52,7 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
-        "compil":[
+        "compile":[
             "php bin/console doctrine:migration:migrate",
             "php bin/console doctrine:fixtures:load --no-interaction --env=PROD"
         ],
